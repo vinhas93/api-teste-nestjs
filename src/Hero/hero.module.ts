@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
+import { HeroController } from './hero.controller';
 
 @Module({
-  controllers: [],
+  controllers: [HeroController],
   providers: [],
 })
 export class HeroModule {}
