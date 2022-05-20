@@ -1,14 +1,33 @@
-import { IsEmpty, IsNumber } from 'class-validator';
+import {
+  Contains,
+  IsEmpty,
+  IsInt,
+  IsLowercase,
+  IsNotEmpty,
+  Length,
+  Min,
+  ValidateIf,
+} from 'class-validator';
 
 export class CreateHeroDto {
-  @IsEmpty()
+  @Length(3, 20)
   name: string;
-  @IsNumber()
+
+  @IsInt()
+  @Min(16)
   age: number;
-  @IsEmpty()
+
+  @IsLowercase()
+  @ValidateIf((o) => o.class !== 'warrior')
+  @ValidateIf((o) => o.class !== 'mage')
+  @ValidateIf((o) => o.class !== 'ranger')
+  @ValidateIf((o) => o.class !== 'rogue')
+  @Contains('warrior, mage, ranger or rogue')
   class: string;
-  @IsEmpty()
+
+  @Length(3)
   skill: string;
-  @IsEmpty()
+
+  @IsNotEmpty()
   story: string;
 }
