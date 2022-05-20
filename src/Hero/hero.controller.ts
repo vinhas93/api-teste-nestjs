@@ -7,12 +7,12 @@ import { ApiTags } from '@nestjs/swagger';
 @Controller('hero')
 export class HeroController {
   constructor(private heroService: HeroService) {}
-  @Get()
+  @Get('list')
   findAll() {
     return this.heroService.findAll();
   }
 
-  @Post()
+  @Post('create')
   create(@Body() createHeroDto: CreateHeroDto) {
     return this.heroService.create(createHeroDto);
   }
