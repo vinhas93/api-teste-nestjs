@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { HeroService } from './hero.service';
 import { CreateHeroDto } from './dto/create-hero.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Hero')
 @Controller('hero')
 export class HeroController {
   constructor(private heroService: HeroService) {}
